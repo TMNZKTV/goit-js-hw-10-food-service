@@ -18,25 +18,17 @@ if (savedTheme === JSON.stringify(`${Theme.DARK}`)) {
   refs.body.classList.add(`${Theme.LIGHT}`);
 }
 
-function changeThemeToDark() {
-  refs.themeToggler.setAttribute('checked', 'true');
-  refs.body.classList.remove(`${Theme.LIGHT}`);
-  refs.body.classList.add(`${Theme.DARK}`);
-  localStorage.setItem('theme', JSON.stringify(`${Theme.DARK}`));
-}
-
-function changeThemeToLight() {
-  refs.themeToggler.removeAttribute('checked');
-  refs.body.classList.remove(`${Theme.DARK}`);
-  refs.body.classList.add(`${Theme.LIGHT}`);
-  localStorage.setItem('theme', JSON.stringify(`${Theme.LIGHT}`));
-}
-
 function changeTheme() {
   if (refs.themeToggler.hasAttribute('checked')) {
-    changeThemeToLight();
+    refs.themeToggler.removeAttribute('checked');
+    refs.body.classList.remove(`${Theme.DARK}`);
+    refs.body.classList.add(`${Theme.LIGHT}`);
+    localStorage.setItem('theme', JSON.stringify(`${Theme.LIGHT}`));
   } else {
-    changeThemeToDark();
+    refs.themeToggler.setAttribute('checked', 'true');
+    refs.body.classList.remove(`${Theme.LIGHT}`);
+    refs.body.classList.add(`${Theme.DARK}`);
+    localStorage.setItem('theme', JSON.stringify(`${Theme.DARK}`));
   }
 }
 
